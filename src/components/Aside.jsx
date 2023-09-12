@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { coordinateSearch, getWeather } from "../utils/API";
 
-const Weather = () => {
+const Aside = () => {
   // declare state variable, coordinates
   const [coordinates, setCoordinates] = useState({});
   const [searchCity, setSearchCity] = useState("");
-  //   const [currentWeather, setCurrentWeather] = useState("");
+  const [currentWeather, setCurrentWeather] = useState("");
 
   //   we have an initial value upon loading
   //   useEffect(() => {
@@ -15,6 +15,8 @@ const Weather = () => {
   const searchCoordinates = async (query) => {
     const { data } = await coordinateSearch(query);
     setCoordinates(data[0]);
+
+    searchWeather(data[0].lat, data[0].lon);
   };
 
   const searchWeather = async (lat, lon) => {
@@ -23,8 +25,8 @@ const Weather = () => {
     setCurrentWeather(data);
   };
 
+  // capture what's typed in search bar
   const changeInputHandler = async (e) => {
-    // console.log(e.target.value);
     setSearchCity(e.target.value);
   };
 
@@ -34,7 +36,7 @@ const Weather = () => {
   };
 
   return (
-    <div>
+    <aside>
       <form onSubmit={submitFormHandler}>
         <input
           id="search"
@@ -49,8 +51,8 @@ const Weather = () => {
         <p>lat: {coordinates?.lat}</p>
         <p>lon: {coordinates?.lon}</p>
       </h4>
-    </div>
+    </aside>
   );
 };
 
-export default Weather;
+export default Aside;
