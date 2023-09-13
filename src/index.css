@@ -18,27 +18,20 @@
 }
 
 body {
-  display: grid;
-  justify-content: center;
-  align-items: center;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
   width: 100%;
   min-height: 100vh;
   font-family: var(--ff--body);
 }
 
 #root {
-  display: grid;
-  grid-template-areas:
-    "header header"
-    "aside weather-container"
-    "aside five-day";
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 
-  grid-template-rows: 1fr 8fr;
-  grid-template-columns: 1fr 4fr;
-  width: 90vw;
-  border: 1px solid black;
-  padding: 0.5em;
-  margin: 2em;
+  width: 100%;
 }
 
 /* ================================================== */
@@ -46,27 +39,27 @@ body {
 /* ================================================== */
 
 header {
-  grid-area: header;
-  display: grid;
+  position: sticky;
   justify-content: center;
-  align-content: center;
+
   background-image: linear-gradient(
     to right,
     rgb(70, 90, 184),
     rgb(37, 19, 96)
   );
   color: var(--clr--font-light);
+  width: 100%;
 }
 
 /* ================================================== */
 /*           ---------- MAIN CONTENT ---------        */
 /* ================================================== */
 
-.weather-container {
+main {
   display: flex;
-  flex-direction: column;
-  padding: 0.5em 0 0 0.5em;
+  /* padding: 0.5em 0 0 0.5em; */
   width: 100%;
+  gap: 1.5em;
 }
 
 h1 {
@@ -74,15 +67,65 @@ h1 {
   text-align: center;
 }
 
-/* ================================================== */
-/*    ---------- ASIDE SEARCH BAR/HISTORY -------     */
-/* ================================================== */
+.searchNav {
+  display: flex;
+  width: 40%;
+  /* border: 1px solid black; */
+  margin: 0.5em 0 0.5em 0.5em;
+}
 
-aside {
-  grid-area: aside;
-  display: grid;
-  grid-template-rows: 1fr 3fr;
-  padding: 0.5em 0 0 0;
-  gap: 0.5em;
+.searchNav input,
+.searchNav button {
+  display: flex;
   width: 100%;
+}
+
+.searchNav form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.searchNav input {
+  border: 1px solid lightgrey;
+  border-radius: 0.25em;
+  /* padding: 0.25em; */
+  width: 100%;
+  font-size: 1em;
+}
+
+.weather-results {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  margin: 0.5em 0.5em 0.5em 0;
+  gap: 1em;
+}
+
+.weather-today {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  gap: 1em;
+  padding: 0.25em;
+}
+
+.weather-today-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.weather-today-header img {
+  display: flex;
+  align-items: start;
+  width: 25px;
+}
+
+.weather-today-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }

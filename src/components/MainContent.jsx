@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { coordinateSearch, getWeather } from "../utils/API";
+import Weather from "./WeatherContainer/index";
 
-const Aside = () => {
+const MainContent = () => {
   // declare state variable, coordinates
   const [coordinates, setCoordinates] = useState({});
   const [searchCity, setSearchCity] = useState("");
   const [currentWeather, setCurrentWeather] = useState("");
 
-  //   we have an initial value upon loading
-  //   useEffect(() => {
-  //     searchCoordinates(searchCity);
-  //   }, []);
+  // we have an initial value upon loading
+  useEffect(() => {
+    searchCoordinates("Philadelphia");
+  }, []);
 
   const searchCoordinates = async (query) => {
     const { data } = await coordinateSearch(query);
@@ -21,7 +22,7 @@ const Aside = () => {
 
   const searchWeather = async (lat, lon) => {
     const { data } = await getWeather(lat, lon);
-    console.log(data);
+    // console.log(data);
     setCurrentWeather(data);
   };
 
@@ -36,23 +37,21 @@ const Aside = () => {
   };
 
   return (
-    <aside>
-      <form onSubmit={submitFormHandler}>
-        <input
-          id="search"
-          type="text"
-          value={searchCity}
-          onChange={changeInputHandler}
-        />
-        <button type="submit">Search</button>
-      </form>
-      <h4>
-        <p>city: {coordinates?.name}</p>
-        <p>lat: {coordinates?.lat}</p>
-        <p>lon: {coordinates?.lon}</p>
-      </h4>
-    </aside>
+    <main>
+      <section className="searchNav">
+        <form onSubmit={submitFormHandler}>
+          <input
+            id="search"
+            type="text"
+            value={searchCity}
+            onChange={changeInputHandler}
+          />
+          <button type="submit">Search</button>
+        </form>
+      </section>
+      <Weather currentWeather={currentWeather} />
+    </main>
   );
 };
 
-export default Aside;
+export default MainContent;

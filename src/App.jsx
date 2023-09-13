@@ -1,13 +1,11 @@
 import Header from "./components/Header";
-import Weather from "./components/WeatherContainer";
-import Aside from "./components/Aside";
+import MainContent from "./components/MainContent";
 
 function App() {
   return (
     <>
       <Header />
-      <Weather className="weather-container" />
-      <Aside />
+      <MainContent />
     </>
   );
 }

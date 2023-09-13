@@ -1,9 +1,11 @@
-const Weather = () => {
-  return (
-    <>
-      <h4>Weather list here</h4>
-    </>
-  );
-};
+import WeatherFiveDay from "./WeatherFiveDay";
+import WeatherToday from "./WeatherToday";
 
-export default Weather;
+export default function Weather({ currentWeather }) {
+  return (
+    <section className="weather-results">
+      <WeatherToday currentWeather={currentWeather} />
+      <WeatherFiveDay />
+    </section>
+  );
+}
