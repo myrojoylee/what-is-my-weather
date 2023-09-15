@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-size: 16px;
+  /* border: none; */
 }
 
 :root {
@@ -39,6 +40,7 @@ body {
 /* ================================================== */
 
 header {
+  display: flex;
   position: sticky;
   justify-content: center;
 
@@ -57,9 +59,7 @@ header {
 
 main {
   display: flex;
-  /* padding: 0.5em 0 0 0.5em; */
   width: 100%;
-  gap: 1.5em;
 }
 
 h1 {
@@ -69,14 +69,12 @@ h1 {
 
 .searchNav {
   display: flex;
-  width: 40%;
-  /* border: 1px solid black; */
-  margin: 0.5em 0 0.5em 0.5em;
+  width: 50%;
+  padding: 1em 0.5em;
 }
 
-.searchNav input,
 .searchNav button {
-  display: flex;
+  /* display: flex; */
   width: 100%;
 }
 
@@ -87,21 +85,21 @@ h1 {
   gap: 0.5em;
 }
 
-.searchNav input {
+#search {
+  display: flex;
   border: 1px solid lightgrey;
   border-radius: 0.25em;
-  /* padding: 0.25em; */
   width: 100%;
   font-size: 1em;
 }
 
 .weather-results {
   display: flex;
+  /* flex-wrap: wrap; */
   flex-direction: column;
   width: 100%;
-
-  margin: 0.5em 0.5em 0.5em 0;
   gap: 1em;
+  padding: 1em 0.5em;
 }
 
 .weather-today {
@@ -129,3 +127,60 @@ h1 {
   flex-direction: column;
   gap: 0.5em;
 }
+
+.five-day-forecast {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.weather-card {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  border: 1px solid grey;
+  background-color: var(--clr--forecast-box);
+  padding: 0.5em;
+}
+
+.weather-card img {
+  width: 30%;
+}
+
+.weather-card p {
+  color: var(--clr--font-light);
+  font-size: 0.8em;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .weather-card {
+    width: 44%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .searchNav,
+  .weather-results {
+    display: flex;
+    width: 95%;
+    padding: auto 0;
+  }
+
+  .weather-card {
+    width: 100%;
+  }
+}
+
+/* @media screen and (max-width: 768px) {
+  .weather-card {
+    width: 100%;
+  }
+} */

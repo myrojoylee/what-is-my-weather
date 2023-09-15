@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { coordinateSearch, getWeather } from "../utils/API";
+import { coordinateSearch, getFiveDayWeather, getWeather } from "../utils/API";
 import Weather from "./WeatherContainer/index";
 
 const MainContent = () => {
@@ -7,6 +7,7 @@ const MainContent = () => {
   const [coordinates, setCoordinates] = useState({});
   const [searchCity, setSearchCity] = useState("");
   const [currentWeather, setCurrentWeather] = useState("");
+  const [fiveDayWeather, setFiveDayWeather] = useState("");
 
   // we have an initial value upon loading
   useEffect(() => {
@@ -18,12 +19,19 @@ const MainContent = () => {
     setCoordinates(data[0]);
 
     searchWeather(data[0].lat, data[0].lon);
+    searchForecast(data[0].lat, data[0].lon);
   };
 
   const searchWeather = async (lat, lon) => {
     const { data } = await getWeather(lat, lon);
     // console.log(data);
     setCurrentWeather(data);
+  };
+
+  const searchForecast = async (lat, lon) => {
+    const { data } = await getFiveDayWeather(lat, lon);
+    setFiveDayWeather(data.list.filter((e, i) => i % 8 === 0));
+    // setFiveDayWeather(data);
   };
 
   // capture what's typed in search bar
@@ -49,7 +57,10 @@ const MainContent = () => {
           <button type="submit">Search</button>
         </form>
       </section>
-      <Weather currentWeather={currentWeather} />
+      <Weather
+        currentWeather={currentWeather}
+        fiveDayWeather={fiveDayWeather}
+      />
     </main>
   );
 };

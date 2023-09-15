@@ -1,6 +1,6 @@
 export default function WeatherToday({ currentWeather }) {
   const data = currentWeather;
-  console.log(data);
+  //   console.log(data);
 
   // formats unix timestamp
   const formatDate = (unixDate) => {
