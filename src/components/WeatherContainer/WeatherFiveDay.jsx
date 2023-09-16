@@ -1,7 +1,6 @@
 export default function WeatherFiveDay({ fiveDayWeather }) {
   const data = fiveDayWeather;
 
-  //   console.log(data);
   // converst unix timestamp
   const formatDate = (unixDate) => {
     let date = new Date(unixDate * 1000);
