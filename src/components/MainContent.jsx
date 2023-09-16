@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { coordinateSearch, getFiveDayWeather, getWeather } from "../utils/API";
 import Weather from "./WeatherContainer/index";
-import SearchHistory from "./SearchHistory";
 
 const MainContent = () => {
   // declare state variable, coordinates
@@ -31,11 +30,13 @@ const MainContent = () => {
     searchForecast(data[0].lat, data[0].lon);
   };
 
+  // grabbing current weather
   const searchWeather = async (lat, lon) => {
     const { data } = await getWeather(lat, lon);
     setCurrentWeather(data);
   };
 
+  // grabbing 5 day forecast
   const searchForecast = async (lat, lon) => {
     const { data } = await getFiveDayWeather(lat, lon);
     setFiveDayWeather(data.list.filter((e, i) => i % 8 === 0));
@@ -44,7 +45,7 @@ const MainContent = () => {
   // capture what's typed in search bar
   const changeInputHandler = async (e) => {
     let city = e.target.value;
-    // console.log(city.charAt(0).toUpperCase() + city.slice(1));
+
     setSearchCity(city.charAt(0).toUpperCase() + city.slice(1));
   };
 
@@ -78,6 +79,14 @@ const MainContent = () => {
     }
   };
 
+  const searchWeatherFromButton = async (e) => {
+    e.preventDefault();
+    const searchTerm = e.target.textContent;
+
+    setSearchCity(searchTerm);
+    searchCoordinates(searchTerm);
+  };
+
   const clearHistory = (e) => {
     e.preventDefault();
     localStorage.clear();
@@ -97,7 +106,17 @@ const MainContent = () => {
           />
           <button type="submit">Search</button>
         </form>
-        <SearchHistory searchHistory={searchHistory} />
+        <section className="search-history-wrapper">
+          {searchHistory?.map((city, index) => (
+            <button
+              key={index}
+              className="search-term"
+              onClick={searchWeatherFromButton}
+            >
+              {city}
+            </button>
+          ))}
+        </section>
         <button onClick={clearHistory}>Clear Search History</button>
       </section>
 
