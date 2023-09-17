@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const coordinateSearch = (query) =>
   axios.get(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=${
+    `https://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=${
       import.meta.env.VITE_API_KEY
     }`
   );
