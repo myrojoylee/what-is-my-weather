@@ -142,14 +142,15 @@ h1 {
 .search-history-wrapper {
   display: flex;
   align-items: center;
-  width: 95%;
   gap: 0.5em;
-  padding: 1em 0;
+  padding: 1em;
 }
 
 .search-history-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5em;
+  padding: 1em 0;
 }
 
 .search-term {
@@ -193,12 +194,6 @@ h1 {
 .weather-today-header h3 {
   font-size: 1.25em;
 }
-
-/* .weather-today-header img {
-  display: flex;
-  align-items: start;
-  width: 40px;
-} */
 
 .weather-today-temp-icon {
   display: flex;
@@ -292,7 +287,7 @@ h1 {
   }
 
   .search-history-wrapper {
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 }
 
@@ -322,11 +317,10 @@ h1 {
 
   .searchNav {
     width: 380px;
-    /* padding: 0 0 1em 0; */
   }
 
   .search-history-wrapper {
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 }
 
@@ -356,10 +350,10 @@ h1 {
 
   .searchNav {
     width: 260px;
-    /* padding: 0 0 1em 0; */
   }
+
   .search-history-wrapper {
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   .weather-today-header {
