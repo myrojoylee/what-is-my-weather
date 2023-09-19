@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,12 +9,12 @@
 
 :root {
   --ff--body: sans-serif;
+  --ff--temp: "Playfair", "serif";
 
   --clr--header-dark: rgb(37, 19, 96);
   --clr--header-light: rgb(70, 90, 184);
   --clr--button-search: rgb(105, 145, 227);
-  --clr--button-city: rgb(174, 174, 175);
-  --clr--forecast-box: rgb(50, 61, 79);
+  --clr--forecast-box: rgb(216, 215, 215);
 
   --clr--font-dark: black;
   --clr--font-light: white;
@@ -31,6 +33,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: start;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(152, 213, 241, 1) 50%,
+    rgba(32, 141, 200, 1) 100%
+  );
 
   width: 100%;
 }
@@ -79,6 +87,7 @@ video {
 }
 
 .wmw-icon {
+  border: 1px solid #48c2f9;
   width: 50px;
 }
 
@@ -94,7 +103,7 @@ main {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2.25em;
 }
 
 .searchNav {
@@ -120,7 +129,7 @@ h1 {
 
 #search {
   display: flex;
-  border: 1px solid lightgrey;
+  border: 1px solid #48c2f9;
   border-radius: 1em;
   width: 100%;
   font-size: 1em;
@@ -166,21 +175,42 @@ h1 {
 .weather-today {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid grey;
   gap: 1em;
   padding: 0.25em;
+  background-color: rgb(255, 255, 255);
 }
 
 .weather-today-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5em;
 }
 
-.weather-today-header img {
+.weather-today-header h3 {
+  font-size: 1.25em;
+}
+
+/* .weather-today-header img {
   display: flex;
   align-items: start;
-  width: 25px;
+  width: 40px;
+} */
+
+.weather-today-temp-icon {
+  display: flex;
+  align-items: center;
+  padding: 1em 0;
+}
+
+.weather-today-temp-icon p {
+  font-family: var(--ff--temp);
+  font-size: 3em;
+}
+
+.weather-today-temp-icon img {
+  width: 65px;
 }
 
 .weather-today-stats {
@@ -189,31 +219,47 @@ h1 {
   gap: 0.5em;
 }
 
+.five-day-forecast-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em 0;
+}
+
 .five-day-forecast {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: space-between;
-  gap: 1em;
+  gap: 1.25em;
+}
+
+.five-day-forecast-wrapper h3 {
+  font-size: 1.25em;
 }
 
 .weather-card {
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 32%;
   border-radius: 0.1em;
-  background-color: var(--clr--button-city);
+  background-color: var(--clr--forecast-box);
   padding: 0.5em;
   line-height: 1.5em;
 }
 
 .weather-card img {
-  width: 30%;
+  width: 50px;
 }
 
 .weather-card p {
-  color: var(--clr--font-light);
-  font-size: 0.8em;
+  color: black;
+  font-size: 1em;
+}
+
+@media screen and (min-width: 1200px) {
+  h1 {
+    font-size: 2.5em;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
@@ -221,17 +267,21 @@ h1 {
     height: 150px;
   }
 
+  h1 {
+    font-size: 2.25em;
+  }
+
   .header-detail {
     justify-content: center;
     flex-direction: column;
   }
 
-  .weather-card {
-    width: 44%;
+  .five-day-forecast {
+    gap: 1.75em;
   }
 
-  .weather-card img {
-    width: 20%;
+  .weather-card {
+    width: 48%;
   }
 
   .searchNav {
@@ -253,6 +303,10 @@ h1 {
 
   header {
     height: 150px;
+  }
+
+  h1 {
+    font-size: 2em;
   }
 
   .header-detail {
@@ -286,7 +340,7 @@ h1 {
   }
 
   h1 {
-    font-size: 1.25em;
+    font-size: 1.5em;
   }
 
   header {
@@ -312,5 +366,9 @@ h1 {
   }
   .search-history-wrapper {
     flex-wrap: wrap;
+  }
+
+  .weather-today-header {
+    flex-direction: column;
   }
 }
