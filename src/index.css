@@ -318,10 +318,6 @@ h1 {
     width: 100%;
   }
 
-  .weather-card img {
-    width: 10%;
-  }
-
   .searchNav {
     width: 380px;
     /* padding: 0 0 1em 0; */
@@ -354,10 +350,6 @@ h1 {
 
   .weather-card {
     width: 100%;
-  }
-
-  .weather-card img {
-    width: 10%;
   }
 
   .searchNav {

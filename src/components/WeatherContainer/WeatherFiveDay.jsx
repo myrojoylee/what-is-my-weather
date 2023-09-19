@@ -7,6 +7,15 @@ export default function WeatherFiveDay({ fiveDayWeather }) {
     return date.toLocaleDateString("en-US");
   };
 
+  const formatTime = (unixDate) => {
+    let date = new Date(unixDate * 1000);
+    return date.toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+  };
+
   return (
     <>
       <article className="five-day-forecast-wrapper">
@@ -19,7 +28,7 @@ export default function WeatherFiveDay({ fiveDayWeather }) {
                   <img
                     src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
                   />
-                  <p>Temp: {Math.round(day.main.temp)} ℉</p>
+                  <p>Temp: {Math.round(day.main.temp)} &deg;F</p>
                   <p>Wind: {day.wind.speed} MPH</p>
                   <p>Humidity: {day.main.humidity} %</p>
                 </div>

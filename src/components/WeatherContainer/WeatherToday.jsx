@@ -38,7 +38,7 @@ export default function WeatherToday({ currentWeather }) {
             <p>Current Weather</p>
             <p>{formatTime(data.dt)}</p>
             <div className="weather-today-temp-icon">
-              <p>{Math.round(data.main.temp)} ℉</p>
+              <p>{Math.round(data.main.temp)} &deg;F</p>
               {data.weather[0] ? (
                 <>
                   <img

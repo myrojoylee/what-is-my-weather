@@ -48,7 +48,6 @@ const App = () => {
   // capture what's typed in search bar
   const changeInputHandler = async (e) => {
     let city = e.target.value;
-
     setSearchCity(city.charAt(0).toUpperCase() + city.slice(1));
   };
 
