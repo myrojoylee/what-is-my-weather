@@ -118,6 +118,8 @@ h1 {
   /* display: flex; */
   padding: 0.25em;
   width: fit-content;
+  color: white;
+  background-color: rgb(32, 141, 200);
 }
 
 .searchNav form {

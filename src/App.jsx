@@ -62,6 +62,10 @@ const App = () => {
       if (localStorage.getItem("weatherSearch") !== null) {
         tempSearchHistory = JSON.parse(localStorage.getItem("weatherSearch"));
         if (!tempSearchHistory.includes(searchCity)) {
+          // limits search history to 5 cities
+          if (tempSearchHistory.length === 5) {
+            tempSearchHistory.pop();
+          }
           tempSearchHistory.unshift(searchCity);
         }
         setSearchHistory(tempSearchHistory);
