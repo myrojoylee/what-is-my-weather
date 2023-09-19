@@ -8,7 +8,7 @@ This frontend application is a revamped version of our vanilla JS weather dashbo
 
 Below is an example of how a user would interact with this web application.
 
-<img src="https://github.com/myrojoylee/weather-dashboard-app/blob/main/assets/css/images/weather-app.gif" width = "700" />
+https://github.com/myrojoylee/what-is-my-weather/assets/120980593/418c50ad-7f46-4a7c-ae8b-f3049663d110
 
 [Click here for live demo](https://wmw-official.netlify.app/)
 
