@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   font-size: 16px;
-  /* border: none; */
+  border: none;
 }
 
 :root {
@@ -43,14 +43,43 @@ header {
   display: flex;
   position: sticky;
   justify-content: center;
-
-  background-image: linear-gradient(
+  align-items: center;
+  /* background-image: linear-gradient(
     to right,
     rgb(70, 90, 184),
     rgb(37, 19, 96)
-  );
+  ); */
   color: var(--clr--font-light);
   width: 100%;
+  /* padding: 2em; */
+  gap: 1em;
+  height: 100px;
+  overflow-y: hidden;
+  object-position: bottom;
+}
+
+video {
+  width: 100vw;
+}
+
+.header-detail {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main-title {
+  display: flex;
+  justify-self: start;
+  align-items: center;
+  padding: 1em;
+  gap: 1em;
+}
+
+.wmw-icon {
+  width: 50px;
 }
 
 /* ================================================== */
@@ -59,55 +88,79 @@ header {
 
 main {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 
 h1 {
-  font-size: 2.25em;
-  text-align: center;
+  font-size: 2em;
 }
 
 .searchNav {
   display: flex;
   flex-direction: column;
   width: 50%;
-  padding: 1em 0.5em;
+  padding: 1em;
   gap: 2em;
 }
 
 .searchNav button {
   /* display: flex; */
-  width: 100%;
+  padding: 0.25em;
+  width: fit-content;
 }
 
 .searchNav form {
   display: flex;
   width: 100%;
-  flex-direction: column;
+  align-items: center;
   gap: 0.5em;
 }
 
 #search {
   display: flex;
   border: 1px solid lightgrey;
-  border-radius: 0.25em;
+  border-radius: 1em;
   width: 100%;
   font-size: 1em;
+  height: 30px;
+  padding: 0 0.25em;
 }
 
 .search-history-wrapper {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  width: 95%;
   gap: 0.5em;
+  padding: 1em 0;
+}
+
+.search-history-list {
+  display: flex;
+  gap: 0.5em;
+}
+
+.search-term {
+  border: 1px solid lightgrey;
+  padding: 0.25em;
+  border-radius: 0.25em;
+}
+
+.clear-history {
+  border: 1px solid grey;
+  background-color: lightgrey;
+  padding: 0.25em;
+  border-radius: 0.25em;
 }
 
 .weather-results {
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: column;
-  width: 100%;
+
+  width: 95%;
   gap: 1em;
-  padding: 1em 0.5em;
+  /* padding: 1em 0.5em; */
 }
 
 .weather-today {
@@ -164,6 +217,15 @@ h1 {
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
+  header {
+    height: 150px;
+  }
+
+  .header-detail {
+    justify-content: center;
+    flex-direction: column;
+  }
+
   .weather-card {
     width: 44%;
   }
@@ -171,32 +233,84 @@ h1 {
   .weather-card img {
     width: 20%;
   }
+
+  .searchNav {
+    width: 380px;
+    /* padding: 0 0 1em 0; */
+  }
+
+  .search-history-wrapper {
+    flex-wrap: wrap;
+  }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 500px) and (max-width: 768px) {
   main {
     flex-direction: column;
     align-items: center;
-    gap: 1em;
+    /* gap: 1em; */
   }
 
-  .searchNav,
-  .weather-results {
-    display: flex;
-    width: 95%;
-    padding: auto 0;
+  header {
+    height: 150px;
+  }
+
+  .header-detail {
+    justify-content: center;
+    flex-direction: column;
   }
 
   .weather-card {
     width: 100%;
   }
+
   .weather-card img {
     width: 10%;
   }
+
+  .searchNav {
+    width: 380px;
+    /* padding: 0 0 1em 0; */
+  }
+
+  .search-history-wrapper {
+    flex-wrap: wrap;
+  }
 }
 
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+    /* gap: 1em; */
+  }
+
+  h1 {
+    font-size: 1.25em;
+  }
+
+  header {
+    height: 150px;
+  }
+
+  .header-detail {
+    justify-content: center;
+    flex-direction: column;
+  }
+
   .weather-card {
     width: 100%;
   }
-} */
+
+  .weather-card img {
+    width: 10%;
+  }
+
+  .searchNav {
+    width: 260px;
+    /* padding: 0 0 1em 0; */
+  }
+  .search-history-wrapper {
+    flex-wrap: wrap;
+  }
+}
